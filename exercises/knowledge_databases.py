@@ -8,8 +8,9 @@ Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-def add_article(category,rate):
+def add_article(name,category,rate):
 	article_object=Knowledge(
+		name=name,
 		category=category,
 		rate=rate
 	)
@@ -29,14 +30,20 @@ print(query_article_by_topic('soccer'))
 
 
 def delete_article_by_topic():
-	pass
+	session.query(Knowledge).filter_by(
+		nanme=name).delete()
+	session.commit()
+
+delete_student("adi")
 
 def delete_all_articles():
-	pass
+	session.query(Knowledge).all().delete()
+	session.commit()
+	
 
-def edit_article_rating():
-	pass
+#def edit_article_rating():
+#	pass
 
-add_article('category','rate')
+add_article('name','category','rate')
 query_all_articles()
 query_article_by_topic('soccer')
