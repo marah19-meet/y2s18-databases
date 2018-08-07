@@ -7,7 +7,7 @@ Base = declarative_base()
 
 class Knowledge(Base):
 	__tablename__="classmates"
-	name=Column(String,primary_key=True)
+	id=Column(String,primary_key=True)
 	article=Column(String)
 	category=Column(String)
 	rate=Column(Integer)
@@ -15,13 +15,12 @@ class Knowledge(Base):
 	###############repr
 
 	def __repr__(self):
-		return(("knowledge name:{}\n"
+		return(("knowledge id:{}\n"
 				"knowledge article:{}\n"
 			   "knowledge category:{}\n"
 			   "knowledge rate:{}\n").format(
-			   self.name,self.article,self.category,self.rate))
-x=Knowledge(name="adi",article="soccer",category="soccer",rate=5)
-print(x)
+			   self.id,self.article,self.category,self.rate))
+
 
 
 	
